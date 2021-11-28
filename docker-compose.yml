@@ -1,13 +1,17 @@
-version: "3.2"
+version: "3.3"
 
 services:
   database:
     restart: always
-    image: mysql:latest
+    image: mysql:5.7
     ports:
       - 3306:3306
     command: --default-authentication-plugin=mysql_native_password
     volumes:
-      - mysql-datavolume:/var/lib/mysql
+      - mysql-volume:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
+
+volumes:
+  mysql-volume:
+    driver: local
