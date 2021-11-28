@@ -1,0 +1,21 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password: root
+  host: 127.0.0.1
+
+development:
+  <<: *default
+  database: idea_development
+
+test:
+  <<: *default
+  database: idea_test
+
+production:
+  <<: *default
+  database: idea_production
+  username: idea
+  password: <%= ENV['IDEA_DATABASE_PASSWORD'] %>
